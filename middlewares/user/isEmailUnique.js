@@ -1,8 +1,8 @@
-const userServices = require('../../services/user');
+const { User } = require('../../models');
 
 const isEmailUnique = async (req, res, next) => {
   const { email } = req.body;
-  const response = await userServices.isEmailUnique(email); // https://sequelize.org/v7/manual/model-querying-finders.html#-code-findone--code-
+  const response = await User.findOne({ where: { email } }); // https://sequelize.org/v7/manual/model-querying-finders.html#-code-findone--code-
 
   if (response === null) {
     return next();
