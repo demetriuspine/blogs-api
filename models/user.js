@@ -1,23 +1,12 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  User.init({
-    displayName: DataTypes.STRING
+  const User = sequelize.define('User', {
+    displayName: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    image: DataTypes.STRING,
   }, {
-    sequelize,
-    modelName: 'User',
+    timestamps: false, // https://stackoverflow.com/questions/36906500/avoid-created-at-and-updated-at-being-auto-generated-by-sequelize
   });
+
   return User;
 };
