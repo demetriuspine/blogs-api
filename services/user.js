@@ -5,6 +5,12 @@ const create = async ({ displayName, email, password, image }) => {
   return newUser;
 };
 
+const isEmailUnique = async (email) => {
+  const response = await User.findOne({ where: { email } });
+  return response;
+};
+
 module.exports = {
   create,
+  isEmailUnique,
 };
