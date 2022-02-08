@@ -1,5 +1,6 @@
 const express = require('express');
 const userController = require('../controllers/user');
+const jwtValidation = require('../middlewares/auth/jwtValidation');
 const isEmailInTheBody = require('../middlewares/user/isEmailInTheBody');
 const isEmailUnique = require('../middlewares/user/isEmailUnique');
 const isEmailValid = require('../middlewares/user/isEmailValid');
@@ -20,6 +21,6 @@ router.post('/',
   isEmailUnique,
   userController.create);
 
-router.get('/', userController.getAll);
+router.get('/', jwtValidation, userController.getAll);
 
 module.exports = router;
