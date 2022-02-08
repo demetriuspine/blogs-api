@@ -8,7 +8,7 @@ const verifyUserExistence = async (req, res, next) => {
     return res.status(404).json({ message: 'User does not exist' });
   }
 
-  req.user = user;
+  req.user = user; // adaptado do conteudo de jwt
 
   next();
 };
