@@ -20,4 +20,6 @@ router.post('/',
   isEmailUnique,
   userController.create);
 
+router.get('/', userController.getAll);
+
 module.exports = router;
