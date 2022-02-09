@@ -7,4 +7,6 @@ const router = express.Router();
 
 router.post('/', isNameInTheBody, jwtValidation, categoryController.create);
 
+router.get('/', jwtValidation, categoryController.getAll);
+
 module.exports = router;
