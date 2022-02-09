@@ -1,3 +1,5 @@
+
+  
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -11,17 +13,28 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      content: {
+        type: Sequelize.STRING
       },
-      updatedAt: {
+      userId: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      published: {
+        type: Sequelize.DATE,
+      },
+      updated: {
+        type: Sequelize.DATE,
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface, _Sequelize) => {
     await queryInterface.dropTable('BlogPosts');
   }
 };
