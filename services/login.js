@@ -5,6 +5,10 @@ const getByEmailAndPassword = async (email, password) => {
     where: { email, password },
     attributes: { exclude: ['password'] }, // adaptado do conteúdo sobre associations do course
   });
+
+  if (response === null) {
+    return null;
+  }
   return response.dataValues;
 };
 
