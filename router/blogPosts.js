@@ -9,4 +9,6 @@ const router = express.Router();
 router.post('/',
 jwtValidation, isTheBodyComplete, verifyCategoryExistence, blogPostsController.create);
 
+router.get('/', jwtValidation, blogPostsController.getAll);
+
 module.exports = router;
