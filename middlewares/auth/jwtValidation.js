@@ -18,6 +18,8 @@ const jwtValidation = async (req, res, next) => { // função adaptada do conteu
       return res.status(401).json({ message: 'Expired or invalid token' });
     }
 
+    req.user = user;
+
     next();
   } catch (e) {
     console.error(e);
